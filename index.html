@@ -44,12 +44,16 @@
 					<h1>The Front End Stack</h1>
 					<h3>A look into modern day build tools for front-end web development.</h3>
                     <aside class="notes">
-                         Introduction - Slide 1
-                         - Short technical talk
-                         - What will we cover?
-                             - Task runners/build tools
-                             - Dependency Management
-                             - Yeoman
+                        <h1>Introduction - Slide 1</h1>
+                        <ul>
+                            <li>15min technical talk</li>
+                            <li>What will we cover?</li>
+                            <ul>
+                                <li>Task runners/build tools</li>
+                                <li>Dependency Management</li>
+                                <li>Yeoman</li>
+                            </ul>
+                        </ul> 
                     </aside>
 				</section>
 
@@ -57,24 +61,31 @@
 					<h1>Grunt &amp; Gulp</h1>
 					<h2>The task runners/build tools</h2>
 					<p class="fragment">Compiling</p>
-					<p class="fragment">Minification/Concantenation</p>
+					<p class="fragment">Testing</p>
 					<p class="fragment">Linting</p>
                     <aside class="notes">
-                         Task Runners - Slide 2
-                            - Grunt &amp; Gulp are the two main task runners (Broccoli is another)
-
-                            - What is Grunt?
-                                - Grunt never set out to be a build tool, but more of a task runner.
-                                    What's the difference?  - Task runners will run shell-script functionality like
-                                                              running a node server or scaffolding.
-                                                            - Build tools will compile, lint etc.
-                                - With that in mind, Grunt is a bit of a mismash of the two but does the build part quite badly compared to others. 
-                                - Is most popular.
-                            - What is Gulp?
-                                - Gulp works similiarly to Grunt (one gulpfile/gruntfile and node plugins) but its main goal is to make
-                                  the build part better by relying on 'pipes'. 
-                                  - The idea is that your code is a list of files that require a series of operations to be applied. 
-                                  - The result of each operation is piped to the next one.
+                        <h1>Task Runners - Slide 2</h1>
+                        <ul>
+                            <li>Grunt &amp; Gulp are the two main task runners (Broccoli is another)</li>
+                            <li>What is Grunt?</li>
+                            <ul>
+                                <li>Grunt is a task-based command line build tool for JavaScript projects. Here's the idea: when working on a JavaScript project, there are a bunch of things you'll want to do regularly. Like what, you ask? Well, like concatenating given files, running JSHint on your code, running tests, or minifying your scripts.</li>
+                                <li>Grunt never set out to be a build tool, but more of a task runner.</li>
+                                <li>Task runners will run shell-script functionality like running a node server or scaffolding.</li>
+                                <li>Build tools will compile, lint etc.</li>
+                            </ul>
+                            <li>With that in mind, Grunt is a bit of a mismash of the two but does the build part quite badly compared to others.</li>
+                            <li>Is most popular.</li>
+                            <li>What is Gulp?</li>
+                            <ul>
+                                <li>Gulp works similiarly to Grunt (one gulpfile/gruntfile and node plugins) but its main goal is to make
+                                  the build part better by relying on 'pipes'.</li>
+                                    <ul>
+                                        <li>The idea is that your code is a list of files that require a series of operations to be applied. </li>
+                                        <li>The result of each operation is piped to the next one.</li>
+                                    </ul>
+                            </ul>
+                        </ul>
                     </aside>
 				</section>
 
@@ -82,9 +93,11 @@
 					<h3>What's the difference?</h3>
 					<img src="img/gulp-grunt.gif" />
                         <aside class="notes">
-                            What's the difference? - Slide 3
-                                - Grunt uses a .tmp folder to store the files its working on. So with that in mind, its
-                                build time is greater because of the added read/write time.
+                            <h1>What's the difference? - Slide 3</h1>
+                                <ul>
+                                    <li>Grunt uses a .tmp folder to store the files its working on. So with that in mind, its
+                                build time is greater because of the added read/write time.</li>
+                                </ul>
                         </aside>
 				</section>
 
@@ -95,9 +108,7 @@
                         <p class="fragment">I/O is very expensive when compared to in-memory operations. On top of that, Grunt has to compile all the files even if only one has changed, which adds additional build time.</p>
 
                     <aside class="notes">
-                        Grunt .tmp Folder - Slide 4
-
-                        - Gulp uses pipes which we touched on earlier. 
+                        <h1>Grunt .tmp Folder - Slide 4</h1>
                     </aside>
                 </section>
 
@@ -107,7 +118,7 @@
                     <img src="img/gulp-flow.png" />
                         <p class="fragment">All Gulp plugins are just through streams that read in data and output data. Everything can be processed in memory, with the output of one stream piped as input to another.</p>
                     <aside class="notes">
-                        Gulp Pipes - Slide 5                        
+                        <h1>Gulp Pipes - Slide 5</h1>                     
                     </aside>
                 </section>
 
@@ -134,20 +145,16 @@ grunt.initConfig({
                 dest: 'css/styles'
             }]
         }
-    },
-    watch: {
-        styles: {
-            files: ['dev/*.scss'],
-            tasks: ['sass:dist', 'autoprefixer:dist']
-        }
     }
 });
-grunt.registerTask('default', ['styles', 'watch']);
+grunt.registerTask('default', ['sass:dist', 'autoprefixer:dist']);
 					</code></pre>
                     <aside class="notes">
-                        Grunt Example - Slide 6
-                            - Walkthrough
-                                - Autoprefixer makes CSS cross browser compatable
+                        <h1>Grunt Example - Slide 6</h1>
+                        <p>Walkthrough</p>
+                        <ul>
+                            <li>Autoprefixer makes CSS cross browser compatable</li>
+                        </ul>
                     </aside>
 				</section>
 
@@ -163,26 +170,39 @@ gulp.task('sass', function () {
 
 gulp.task('default', function() {
     gulp.run('sass');
-    gulp.watch('dev/*.scss', function() {
-        gulp.run('sass');
-    });
 });
 					</code></pre>
                     <aside class="notes">
-                        Gulp Example - Slide 7
-                            - Walkthrough
+                        <h1>Gulp Example - Slide 7</h1>
+                        <p>Walkthrough</p>
                     </aside>
 				</section>
 
-				<section></section>
+				<section>
+                    <h2>Summary</h2>
+                    <h3 class="fragment">Grunt</h3>
+                    <p class="fragment">File based build tool/task runner</p>
+                    <p class="fragment">Looks for a Gruntfile.js</p>
+                    <p class="fragment">Uses .tmp files for build</p>
+                    <h3 class="fragment">Gulp</h3>
+                    <p class="fragment">Stream based build tool/task runner</p>
+                    <p class="fragment">Looks for a Gulpfile.js</p>
+                    <p class="fragment">Uses Node streams to pipe tasks together</p>
+                    <aside class="notes">
+                        <h1>Gulp &amp; Grunt Summary</h1>
+                    </aside>
+                </section>
 
 				<section>
 					<h1>Bower &amp; NPM</h1>
 					<h2>Dependency Management</h2>
                     <aside class="notes">
-                        Bower NPM - Slide 8
-                            - The problem: increasingly we're turning to libraries like jQuery, Angular.js, Bootstrap, ReactJS, and all the multitudes of plugins that go with them.
-                            - PHP we have composer, Ruby we have bundler
+                        <h1>Bower NPM - Slide 8</h1>
+
+                        <ul>
+                            <li>The problem: increasingly we're turning to libraries like jQuery, Angular.js, Bootstrap, ReactJS, and all the multitudes of plugins that go with them.</li>
+                            <li>PHP we have composer, Ruby we have bundler</li>
+                        </ul>
                     </aside>
 				</section>
 
@@ -198,10 +218,14 @@ gulp.task('default', function() {
 $ bower install
                     </code></pre>
                     <aside class="notes">
-                        Bower.js - Slide 9
-                            - bower.json minimal example
-                            - Would install to bower_components, which would be git ignored
-                            - These are then read in in your JS source code.
+                        <h1>Bower.js - Slide 9</h1>
+
+                        <ul>
+                            <li>Dependency management for the client-side</li>
+                            <li>Looks for a bower.json</li>
+                            <li>Would install to bower_components, which would be git ignored</li>
+                            <li>These are then read in in your JS source code.</li>
+                        </ul>
                     </aside>
                 </section>
 
@@ -226,10 +250,13 @@ app.get('/', function (req, res) {
 app.listen(3000)
                     </code></pre>
                     <aside class="notes">
-                        NPM - Slide 10
-                            - package.json minimal example
-                            - Would install to node_modules, which would be git ignored
-                            - These are then read in in in task runners OR JS source code, .e.g RequireJS, Node.js
+                        <h1>NPM - Slide 10</h1>
+                        <ul>
+                            <li>Dependency management for the server-side</li>
+                            <li>Looks for a package.json</li>
+                            <li>Would install to node_modules, which would be git ignored</li>
+                            <li>These are then read in in in task runners OR JS source code, .e.g RequireJS, Node.js</li>
+                        </ul>
                     </aside>
                 </section>
 
@@ -238,20 +265,33 @@ app.listen(3000)
 					<img src="img/bower-npm.jpg" />
                     <p class="fragment">NPM for all server-side components and Bower for client-side stuff</p>
                     <aside class="notes">
-                        Whats the difference? - Slide 11
-                            npm is most commonly used for managing Node.js modules, but it works for the front-end too when combined with Browserify
+                        <h1>Whats the difference? - Slide 11</h1>
+                           <ul>
+                                <li>npm is most commonly used for managing Node.js modules, but it works for the front-end too when combined with Browserify</li>
 
-                            Bower is created solely for the front-end and is optimized with that in mind. 
+                                <li>Bower is created solely for the front-end and is optimized with that in mind. </li>
 
-                            The biggest difference is that npm does nested dependency tree (size heavy) while Bower requires a flat dependency tree (puts the burden of dependency resolution on the user).
+                                <li>The biggest difference is that npm does nested dependency tree (size heavy) while Bower requires a flat dependency tree (puts the burden of dependency resolution on the user).</li>
 
-                            A nested dependency tree means that your dependencies can have its own dependencies which can have their own, and so on.
+                                <li>A nested dependency tree means that your dependencies can have its own dependencies which can have their own, and so on.</li>
 
-                            The reason many projects use both is that they use Bower for front-end packages and npm for developer tools like Yeoman, Grunt, Gulp.
+                                <li>The reason many projects use both is that they use Bower for front-end packages and npm for developer tools like Grunt, Gulp.</li>
+                            </ul>
                     </aside>
 				</section>
 
-				<section></section>
+				<section>
+                    <h2>Summary</h2>
+                    <h3 class="fragment">Bower</h3>
+                    <p class="fragment">Dependency management for the client-side</p>
+                    <p class="fragment">Looks for a bower.json</p>
+                    <h3 class="fragment">NPM</h3>
+                    <p class="fragment">Dependency management for the server-side</p>
+                    <p class="fragment">Looks for a package.json</p>
+                    <aside class="notes">
+                        <h1>Bower &amp; NPM Summary</h1>
+                    </aside>
+                </section>
 
 				<section>
 					<img src="img/yeoman.png" />
@@ -263,11 +303,12 @@ yo react-webpack
 yo react-webpack:component barry  //or just: yo react-webpack:c barry
                     </code></pre>
                     <aside class="notes">
-                        Yeoman - What is it? - Slide 12
-                            - Scaffolding tool, used to give a quick starting point for front end web apps.
-                            - Usually used for prototypes
-                            - Depending on generator, it can aid with component generation.
-                                - e.g. React
+                        <h1>Yeoman - What is it? - Slide 12</h1>
+                            <ul>
+                                <li>Scaffolding tool, used to give a quick starting point for front end web apps.</li>
+                                <li>Usually used for prototypes</li>
+                                <li>Depending on generator, it can aid with component generation. e..g ReactJs</li>
+                            </ul>
                     </aside>
 				</section>
 
@@ -279,7 +320,7 @@ yo react-webpack:component barry  //or just: yo react-webpack:c barry
 
 var React = require('react/addons');
 
-require('styles/componentName.scss');
+require('styles/componentName.css');
 
 var Barry = React.createClass({
     render: function () {
@@ -303,6 +344,7 @@ yo codecoffee
 
 				<section>
 					<h1>Thanks</h1>
+                    <p>bit.ly/1hHPR8x</p>
 				</section>
 
 			</div>
